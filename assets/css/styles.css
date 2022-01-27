@@ -5,12 +5,16 @@
   --white: rgba(255, 255, 255, 1);
   --black: rgba(38, 38, 38, 1);
   --blue: rgba(95, 16, 245, 1);
+  --yellow: rgba(247, 202, 24, 1);
+  --p-1: 1rem;
+  --p-2: 2rem;
 }
 
 html {
   font-family: "Poppins", sans-serif;
   color: var(--black);
   height: 100%;
+  font-size: 16px;
 }
 
 body {
@@ -28,4 +32,87 @@ body {
   border: 0;
   outline: 0;
   color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 1124px;
+  display: inherit;
+  align-items: inherit;
+  flex-direction: row;
+  padding: var(--p-1);
+}
+
+/*** HEADER ***/
+
+header {
+  background-color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+header .logo {
+  flex: 1;
+}
+
+header .logo a h1 {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+header .switchContainer label {
+  border: 1px solid var(--black);
+  display: flex;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+header .switchContainer label .ball {
+  width: 50%;
+  height: 100%;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 1px solid var(--gray);
+}
+
+header .switchContainer label [data-mode="dark"] {
+  background-color: var(--black);
+  color: var(--white);
+  margin-left: 0;
+}
+
+header .switchContainer label [data-mode="light"] {
+  background-color: var(--yellow);
+  color: var(--black);
+  margin-left: auto;
+}
+
+header .switchContainer label .ball i {
+  color: inherit;
+  font-size: 1.1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .switchContainer input {
+  display: none;
+}
+
+/*** MAIN ***/
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

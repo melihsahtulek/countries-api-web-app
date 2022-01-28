@@ -79,7 +79,6 @@ header .switchContainer label .ball {
   height: 100%;
   border-radius: 100%;
   overflow: hidden;
-  border: 1px solid var(--gray);
 }
 
 header .switchContainer label [data-mode="dark"] {
@@ -115,4 +114,108 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+main .search {
+  flex: 1;
+  height: 50px;
+  display: flex;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+main .search .icon {
+  height: 100%;
+  width: 50px;
+}
+
+main .search .icon i {
+  border-right: 1px solid var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+main .search input {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 300;
+  padding-left: 1rem;
+}
+
+main .filterAndGridType {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+}
+
+main .filterAndGridType .dropDown {
+  flex: 1;
+  position: relative;
+}
+
+main .filterAndGridType .dropDown button {
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--yellow);
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 0 10px;
+  text-transform: capitalize;
+}
+
+main .filterAndGridType .dropDown button i {
+  font-size: 1.5rem;
+}
+
+main .filterAndGridType .dropDown nav {
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  border-radius: 5px;
+  border: 1px solid var(--gray);
+  opacity: 0;
+  visibility: hidden;
+}
+
+main .filterAndGridType .dropDown nav a {
+  padding: 10px;
+}
+
+main .filterAndGridType .dropDown nav a:not(:last-of-type) {
+  border-bottom: 1px solid var(--gray);
+}
+
+.filterAndGridType {
+}
+
+.filterAndGridType .gridType {
+  display: flex;
+}
+
+.filterAndGridType .gridType button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  background-color: transparent;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.filterAndGridType .gridType button:not(:last-of-type) {
+  margin-right: 5px;
 }

@@ -4,7 +4,6 @@
   --gray: rgba(236, 240, 241, 1);
   --white: rgba(255, 255, 255, 1);
   --black: rgba(38, 38, 38, 1);
-  --blue: rgba(95, 16, 245, 1);
   --yellow: rgba(247, 202, 24, 1);
   --p-1: 1rem;
   --p-2: 2rem;
@@ -18,6 +17,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   line-height: 1.5;
 }
@@ -224,6 +225,10 @@ main .filterAndGridType .dropDown nav a:not(:last-of-type) {
   color: rgba(0, 0, 0, 0.35);
 }
 
+.filterAndGridType .gridType button:hover {
+  color: var(--black);
+}
+
 .filterAndGridType .gridType button:not(:last-of-type) {
   margin-right: 5px;
 }
@@ -241,6 +246,10 @@ main .countries .country {
   padding: 0 var(--p-1);
 }
 
+main .countries .country:not(:last-of-type) {
+  margin-bottom: var(--p-1);
+}
+
 main .countries .country .content {
   display: flex;
   border: 1px solid var(--gray);
@@ -248,11 +257,28 @@ main .countries .country .content {
   border-radius: 5px;
   align-items: center;
   transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+main .countries .country .content::after {
+  content: "";
+  width: 35px;
+  height: 25px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z'/%3E%3C/svg%3E");
+  position: absolute;
+  background-repeat: no-repeat;
+  right: -35px;
+  transition: all 0.25s;
 }
 
 main .countries .country .content:hover {
-  border-color: var(--black);
+  box-shadow: 0 0 10px var(--gray);
   transition: all 0.25s;
+}
+
+main .countries .country .content:hover::after {
+  right: 0;
 }
 
 main .countries .country .content .flag {
@@ -285,4 +311,23 @@ main .countries .country .content .info h3 {
   padding-left: 10px;
   font-weight: 500;
   color: gray;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--p-2) var(--p-1);
+  background-color: var(--gray);
+}
+
+footer h3 {
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+footer h3 i {
+  color: rgba(242, 38, 19, 1);
 }

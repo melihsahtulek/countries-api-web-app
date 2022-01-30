@@ -103,7 +103,6 @@ header .switchContainer label .ball::before {
   background-color: var(--black);
   border-radius: 100%;
   transition: all 0.25s;
-  margin-left: 50%;
 }
 
 header .switchContainer label .ball i {
@@ -125,6 +124,11 @@ input[type="checkbox"]:checked + label .ball::before {
   margin-left: 0;
 }
 
+input[type="checkbox"] + label .ball::before {
+  transition: all 0.25s;
+  margin-left: 50%;
+}
+
 input[type="checkbox"] + label i:last-of-type {
   color: var(--yellow);
   z-index: 1;
@@ -136,6 +140,11 @@ input[type="checkbox"]:checked + label i:last-of-type {
 
 input[type="checkbox"]:checked + label i:first-of-type {
   color: var(--white);
+  z-index: 1;
+}
+
+input[type="checkbox"]:checked + label i:last-of-type {
+  color: var(--black);
   z-index: 1;
 }
 
@@ -256,11 +265,11 @@ main .filterAndGridType .dropDown nav a:not(:last-of-type) {
   font-size: 1.75rem;
   background-color: transparent;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.35);
+  color: inherit;
 }
 
 .filterAndGridType .gridType button:hover {
-  color: var(--black);
+  color: var(--yellow);
 }
 
 .filterAndGridType .gridType button:not(:last-of-type) {

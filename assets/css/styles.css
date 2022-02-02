@@ -515,7 +515,7 @@ footer h3 i {
   flex: 1;
   padding-left: var(--p-2);
   font-weight: 500;
-  font-size: 1.85rem;
+  font-size: 2rem;
 }
 
 .detail {
@@ -536,7 +536,6 @@ footer h3 i {
 
 .detail .left .flag img {
   width: 100%;
-  height: auto;
   border-radius: 5px;
 }
 
@@ -576,6 +575,7 @@ footer h3 i {
   flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
+  margin-top: -1rem;
 }
 
 .tables .tableContainer {

@@ -31,117 +31,14 @@
     <main>
       <div class="container">
         <div class="backToHomePage">
-          <button type="button"><i class="ri-arrow-left-line"></i></button>
-          <h2>Republic Of Turkey</h2>
+          <button type="button" onclick="history.back()"><i class="ri-arrow-left-line"></i></button>
+          <h2 class="detailTitle"></h2>
         </div>
       </div>
-      <div class="container">
-        <div class="detail">
-          <div class="left">
-            <div class="flag">
-              <img src="https://flagcdn.com/tr.svg" alt="" />
-            </div>
-          </div>
-          <div class="right">
-            <ul class="info">
-              <li>
-                <span>native name</span>
-                <span>Türkiye</span>
-              </li>
-              <li>
-                <span>domain</span>
-                <span>.tr</span>
-              </li>
-              <li>
-                <span>capital</span>
-                <span>Ankara</span>
-              </li>
-              <li>
-                <span>calling Codes</span>
-                <span>+1</span>
-              </li>
-              <li>
-                <span>region</span>
-                <span>Asia</span>
-              </li>
-              <li>
-                <span>subregion</span>
-                <span>Western Asia</span>
-              </li>
-              <li>
-                <span>area</span>
-                <span>783562</span>
-              </li>
-              <li>
-                <span>population</span>
-                <span>329484123</span>
-              </li>
-              <li>
-                <span>demonym</span>
-                <span>Turkish</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <div class="container" id="detailContainer"></div>
 
       <div class="container">
-        <div class="tables">
-          <div class="tableContainer">
-            <table>
-              <thead>
-                <tr>
-                  <th>code</th>
-                  <th>name</th>
-                  <th>Native Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>en</td>
-                  <td>English</td>
-                  <td>English</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tableContainer">
-            <table>
-              <thead>
-                <tr>
-                  <th>code</th>
-                  <th>name</th>
-                  <th>Native Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>en</td>
-                  <td>English</td>
-                  <td>English</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="tableContainer">
-            <table>
-              <thead>
-                <tr>
-                  <th>code</th>
-                  <th>name</th>
-                  <th>Native Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>en</td>
-                  <td>English</td>
-                  <td>English</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <div class="tables" id="tablesContainer"></div>
       </div>
     </main>
 
@@ -149,6 +46,7 @@
       <h3>made with <i class="ri-heart-fill"></i> <a href="#">melihsahtulek</a></h3>
     </footer>
 
+    <script src="./assets/js/detail.js"></script>
     <script src="./assets/js/mode.js"></script>
   </body>
 </html>

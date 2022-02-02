@@ -439,6 +439,33 @@ main .countries .country .content .info h3 {
   color: gray;
 }
 
+.loadCountry {
+  display: none;
+  flex: 1;
+  margin-top: -1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadCountry button {
+  width: auto;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 10px 20px !important;
+  gap: 5px;
+  cursor: pointer;
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.loadCountry button i {
+  font-size: 1.5rem;
+}
+
+/** FOOTER **/
+
 footer {
   display: flex;
   align-items: center;
@@ -577,6 +604,10 @@ footer h3 i {
 /*** RESPONSIVE ***/
 
 @media (max-width: 1124px) {
+  html {
+    font-size: 15px;
+  }
+
   .container {
     width: 100%;
   }
@@ -587,6 +618,20 @@ footer h3 i {
 }
 
 @media (max-width: 720px) {
+  .country .content .info {
+    flex-direction: column;
+  }
+
+  .country .content .info h2 {
+    max-width: 200px !important;
+    font-size: 1.75rem !important;
+  }
+
+  .country .content .info h3 {
+    padding-left: 0 !important;
+    line-height: 1;
+  }
+
   .detail {
     flex-direction: column;
   }

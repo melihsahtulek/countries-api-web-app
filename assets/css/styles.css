@@ -113,6 +113,7 @@ header .switchContainer label .ball i {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: initial;
 }
 
 header .switchContainer input {

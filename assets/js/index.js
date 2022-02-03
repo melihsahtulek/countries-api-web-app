@@ -8,6 +8,7 @@ const countriesContainer = document.getElementById("countriesContainer");
 const loadCountry = document.getElementsByClassName("loadCountry")[0];
 const loadCountryBtn = document.getElementById("loadCountryBtn");
 let maxSize = 10;
+const search = document.getElementsByName("search")[0];
 
 const getAllCountries = new Promise(async (resolve, reject) => {
   loadCountry.style.display = "none";
@@ -41,17 +42,41 @@ getAllCountries
   .catch((err) => (countriesContainer.innerHTML = `<center>we have a error : ${err}</center>`));
 
 loadCountryBtn.addEventListener("click", () => {
-  maxSize += 10;
+  if (search.value.length > 0) {
+    maxSize += 10;
+    toFilter(search.value);
+  } else {
+    maxSize += 10;
+    getAllCountries
+      .then((data) => {
+        write(data);
+      })
+      .catch((err) => (countriesContainer.innerHTML = `<center>we have a error : ${err}</center>`));
+  }
+});
+
+/*** SEARCH ***/
+
+search.addEventListener("input", (e) => {
+  toFilter(e.target.value);
+});
+
+const toFilter = (q) => {
   getAllCountries
     .then((data) => {
-      write(data);
+      const filter = data.filter((country) => {
+        if (country.name.toLowerCase().includes(q.toLowerCase())) {
+          return country;
+        }
+      });
+
+      write(filter);
     })
     .catch((err) => (countriesContainer.innerHTML = `<center>we have a error : ${err}</center>`));
-});
+};
 
 const write = (data) => {
   countriesContainer.innerHTML = null;
-
   if (maxSize <= data.length - 10) {
     loadCountry.style.display = "flex";
   } else {
@@ -80,4 +105,8 @@ const write = (data) => {
       control++;
     }
   }
+
+  Array.from(document.getElementsByClassName("country")).forEach((link) => {
+    link.addEventListener("click", () => (search.value = ""));
+  });
 };

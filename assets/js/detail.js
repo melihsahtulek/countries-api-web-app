@@ -18,16 +18,17 @@ const getCountry = new Promise(async (resolve, reject) => {
   }
 });
 
-getCountry.then((data) => {
-  detailTitle.textContent = data.name;
+getCountry
+  .then((data) => {
+    detailTitle.textContent = data.name;
 
-  const cleanNumber = (n) => {
-    return n;
-  };
+    const cleanNumber = (n) => {
+      return n;
+    };
 
-  detailContainer.insertAdjacentHTML(
-    "beforeend",
-    `
+    detailContainer.insertAdjacentHTML(
+      "beforeend",
+      `
       <div class="detail">
         <div class="left">
           <div class="flag">
@@ -76,11 +77,11 @@ getCountry.then((data) => {
         </div>
     </div>
   `
-  );
+    );
 
-  tablesContainer.insertAdjacentHTML(
-    "beforeend",
-    `
+    tablesContainer.insertAdjacentHTML(
+      "beforeend",
+      `
     <div class="tableContainer">
       <table>
         <thead>
@@ -190,5 +191,6 @@ getCountry.then((data) => {
   </div>
 
   `
-  );
-});
+    );
+  })
+  .catch((err) => (document.location.href = "/"));

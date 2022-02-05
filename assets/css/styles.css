@@ -169,7 +169,8 @@ main .search {
 
 main .search .icon {
   height: 100%;
-  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
 }
 
 main .search .icon i {
@@ -505,7 +506,7 @@ footer h3 i {
   flex: 1;
   display: flex;
   align-items: center;
-  padding-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .backToHomePage button {
@@ -528,6 +529,7 @@ footer h3 i {
   padding-left: var(--p-2);
   font-weight: 500;
   font-size: 2rem;
+  line-height: 1 !important;
 }
 
 .detail {

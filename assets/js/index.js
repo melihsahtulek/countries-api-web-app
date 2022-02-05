@@ -9,6 +9,8 @@ const loadCountry = document.getElementsByClassName("loadCountry")[0];
 const loadCountryBtn = document.getElementById("loadCountryBtn");
 let maxSize = 10;
 const search = document.getElementsByName("search")[0];
+const dropDownBtn = document.getElementById("dropDownBtn");
+const dropDownNav = document.getElementById("dropDownNav");
 
 const getAllCountries = new Promise(async (resolve, reject) => {
   loadCountry.style.display = "none";
@@ -75,6 +77,45 @@ const toFilter = (q) => {
     .catch((err) => (countriesContainer.innerHTML = `<center>we have a error : ${err}</center>`));
 };
 
+/** GRID TYPE ***/
+
+colType.addEventListener("click", () => {
+  Array.from(document.getElementsByClassName("country")).forEach((country) => {
+    country.style.width = "50%";
+  });
+});
+
+rowType.addEventListener("click", () => {
+  Array.from(document.getElementsByClassName("country")).forEach((country) => {
+    country.style.width = "100%";
+  });
+});
+
+/*** DROPDOWN ***/
+
+dropDownBtn.addEventListener("click", () => {
+  if (dropDownNav.getAttribute("data-show") === "false") {
+    dropDownNav.setAttribute("data-show", "true");
+    dropDownNav.classList.add("showTheDropdownNav");
+  } else {
+    dropDownNav.setAttribute("data-show", "false");
+    dropDownNav.classList.remove("showTheDropdownNav");
+  }
+});
+
+Array.from(dropDownNav.children).forEach((region) => {
+  region.addEventListener("click", async () => {
+    const response = await fetch(`https://restcountries.com/v2/region/${region.textContent}`);
+    const json = await response.json();
+    if (json.message) {
+      return false;
+    } else {
+      maxSize = json.length;
+      write(json);
+    }
+  });
+});
+
 const write = (data) => {
   countriesContainer.innerHTML = null;
   if (maxSize <= data.length - 10) {
@@ -110,15 +151,3 @@ const write = (data) => {
     link.addEventListener("click", () => (search.value = ""));
   });
 };
-
-colType.addEventListener("click", () => {
-  Array.from(document.getElementsByClassName("country")).forEach((country) => {
-    country.style.width = "50%";
-  });
-});
-
-rowType.addEventListener("click", () => {
-  Array.from(document.getElementsByClassName("country")).forEach((country) => {
-    country.style.width = "100%";
-  });
-});

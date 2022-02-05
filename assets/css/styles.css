@@ -54,7 +54,7 @@ a {
   align-items: inherit;
   flex-direction: row;
   padding: var(--p-1);
-  overflow: hidden !important;
+  /* overflow: hidden !important; */
 }
 
 /*** HEADER ***/
@@ -230,7 +230,16 @@ main .filterAndGridType .dropDown nav {
   top: 75px;
   border-radius: 5px;
   background-color: var(--gray);
-  display: none;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s;
+}
+
+.showTheDropdownNav {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: all 0.25s !important;
 }
 
 main .filterAndGridType .dropDown nav::before {
@@ -247,6 +256,7 @@ main .filterAndGridType .dropDown nav::before {
 
 main .filterAndGridType .dropDown nav a {
   padding: 10px;
+  color: var(--black);
 }
 
 main .filterAndGridType .dropDown nav a:not(:last-of-type) {
@@ -281,6 +291,8 @@ main .loading {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  flex: 1;
 }
 
 main .loading .load {

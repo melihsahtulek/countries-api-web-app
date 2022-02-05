@@ -23,7 +23,7 @@ getCountry
     detailTitle.textContent = data.name;
 
     const cleanNumber = (n) => {
-      return n;
+      return n; // [ ] will be replace to comma number
     };
 
     detailContainer.insertAdjacentHTML(

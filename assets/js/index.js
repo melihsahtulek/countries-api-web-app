@@ -110,6 +110,8 @@ Array.from(dropDownNav.children).forEach((region) => {
     if (json.message) {
       return false;
     } else {
+      dropDownNav.setAttribute("data-show", "false");
+      dropDownNav.classList.remove("showTheDropdownNav");
       maxSize = json.length;
       write(json);
     }
@@ -151,3 +153,10 @@ const write = (data) => {
     link.addEventListener("click", () => (search.value = ""));
   });
 };
+
+document.addEventListener("click", (e) => {
+  if (e.target.parentElement.getAttribute("data-key") !== "dropDown") {
+    dropDownNav.setAttribute("data-show", "false");
+    dropDownNav.classList.remove("showTheDropdownNav");
+  }
+});

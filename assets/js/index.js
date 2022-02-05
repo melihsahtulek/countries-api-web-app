@@ -110,3 +110,15 @@ const write = (data) => {
     link.addEventListener("click", () => (search.value = ""));
   });
 };
+
+colType.addEventListener("click", () => {
+  Array.from(document.getElementsByClassName("country")).forEach((country) => {
+    country.style.width = "50%";
+  });
+});
+
+rowType.addEventListener("click", () => {
+  Array.from(document.getElementsByClassName("country")).forEach((country) => {
+    country.style.width = "100%";
+  });
+});

@@ -18,9 +18,58 @@ const getCountry = new Promise(async (resolve, reject) => {
   }
 });
 
+const getBorders = new Promise(async (resolve, reject) => {
+  const response = await fetch(`../../countries.json`);
+  const json = await response.json();
+  if (json.message) {
+    reject(json.message);
+  } else {
+    resolve(json);
+  }
+});
+
 getCountry
   .then((data) => {
     detailTitle.textContent = data.name;
+
+    getBorders.then((items) => {
+      let filter = items.filter((item) => {
+        if (data.borders.includes(item.code)) {
+          return item.name;
+        }
+      });
+      tablesContainer.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <div class="tableContainer">
+          <table>
+            <thead>
+              <tr>
+                <th>code</th>
+                <th>name</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${(function () {
+                let rows = ``;
+
+                filter?.forEach((border) => {
+                  rows += `
+                    <tr>
+                      <td>${border.code}</td>
+                      <td>${border.name}</td>
+                    </tr>
+                  `;
+                });
+
+                return rows;
+              })()}
+            </tbody>
+          </table>
+        </div>
+        `
+      );
+    });
 
     const cleanNumber = (n) => {
       return n; // [ ] will be replace to comma number

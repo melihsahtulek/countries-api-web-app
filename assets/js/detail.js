@@ -32,44 +32,46 @@ getCountry
   .then((data) => {
     detailTitle.textContent = data.name;
 
-    getBorders.then((items) => {
-      let filter = items.filter((item) => {
-        if (data.borders.includes(item.code)) {
-          return item.name;
-        }
+    if (data.borders) {
+      getBorders.then((items) => {
+        let filter = items.filter((item) => {
+          if (data.borders.includes(item.code)) {
+            return item.name;
+          }
+        });
+        tablesContainer.insertAdjacentHTML(
+          "afterbegin",
+          `
+          <div class="tableContainer">
+            <table>
+              <thead>
+                <tr>
+                  <th>code</th>
+                  <th>name</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(function () {
+                  let rows = ``;
+
+                  filter?.forEach((border) => {
+                    rows += `
+                      <tr>
+                        <td>${border.code}</td>
+                        <td>${border.name}</td>
+                      </tr>
+                    `;
+                  });
+
+                  return rows;
+                })()}
+              </tbody>
+            </table>
+          </div>
+          `
+        );
       });
-      tablesContainer.insertAdjacentHTML(
-        "afterbegin",
-        `
-        <div class="tableContainer">
-          <table>
-            <thead>
-              <tr>
-                <th>code</th>
-                <th>name</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(function () {
-                let rows = ``;
-
-                filter?.forEach((border) => {
-                  rows += `
-                    <tr>
-                      <td>${border.code}</td>
-                      <td>${border.name}</td>
-                    </tr>
-                  `;
-                });
-
-                return rows;
-              })()}
-            </tbody>
-          </table>
-        </div>
-        `
-      );
-    });
+    }
 
     const cleanNumber = (n) => {
       return n; // [ ] will be replace to comma number
@@ -238,8 +240,46 @@ getCountry
       </tbody>
     </table>
   </div>
-
   `
     );
+
+    const changeTableGridView = () => {
+      setTimeout(() => {
+        const rowLen = Math.round(document.getElementsByClassName("tableContainer").length / 2);
+        const tables = document.getElementsByClassName("tableContainer");
+        let topValueLeft = 0;
+        let topValueRight = 0;
+        for (let i = 0; i < rowLen; i++) {
+          for (let j = i; j < i + 2; j++) {
+            if (tables[j + i]) {
+              if ((i + j) % 2 === 0) {
+                tables[j + i].style.position = "absolute";
+                tables[j + i].style.top = `${topValueLeft}px`;
+                topValueLeft += tables[j + i].clientHeight;
+              } else {
+                tables[j + i].style.position = "absolute";
+                tables[j + i].style.left = "50%";
+                tables[j + i].style.top = `${topValueRight}px`;
+                topValueRight += tables[j + i].clientHeight;
+              }
+            }
+          }
+        }
+        tablesContainer.style.height = `${topValueLeft + topValueRight}px`;
+      }, 0);
+    };
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 720) {
+        const tables = document.getElementsByClassName("tableContainer");
+        Array.from(tables).forEach((element) => {
+          element.removeAttribute("style");
+        });
+      } else {
+        changeTableGridView();
+      }
+    });
+
+    changeTableGridView();
   })
   .catch((err) => (document.location.href = "/"));

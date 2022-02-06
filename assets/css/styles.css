@@ -590,6 +590,7 @@ footer h3 i {
   margin-left: -10px;
   margin-right: -10px;
   margin-top: -1rem;
+  position: relative;
 }
 
 .tables .tableContainer {
